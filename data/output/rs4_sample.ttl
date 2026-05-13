@@ -1,0 +1,397 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dts: <https://dtsapi.org/v1.0#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.org/dts/collections/hwgw> a dts:Collection ;
+    dct:creator "Heinrich Wölfflin" ;
+    dct:language "de" ;
+    dts:collection "http://rs4.ethz.ch/dts/collection/?id=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw{&nav}" ;
+    dts:dtsVersion "1.0" ;
+    dts:member <https://example.org/dts/collections/hwgw/s01>,
+        <https://example.org/dts/collections/hwgw/s03>,
+        <https://example.org/dts/collections/hwgw/s04> ;
+    dts:title "Heinrich Wölfflin – Gesammelte Werke" ;
+    dts:totalChildren 3 ;
+    dts:totalParents 1 .
+
+<https://example.org/dts/collections/hwgw/s01> a dts:Collection ;
+    dts:collection "http://rs4.ethz.ch/dts/collection/?id=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs01{&nav}" ;
+    dts:dtsVersion "1.0" ;
+    dts:member <https://example.org/dts/collections/hwgw/s01/app>,
+        <https://example.org/dts/collections/hwgw/s01/ed>,
+        <https://example.org/dts/collections/hwgw/s01/in> ;
+    dts:title "Schriften 1" ;
+    dts:totalChildren 3 ;
+    dts:totalParents 1 .
+
+<https://example.org/dts/collections/hwgw/s01/app> a dts:Resource ;
+    dct:creator "Heinrich Wölfflin" ;
+    dct:editor "Oskar Bätschmann",
+        "Tristan Weddigen" ;
+    dct:language "Deutsch" ;
+    dct:publisher "Bibliotheca Hertziana – Max-Planck-Institut für Kunstgeschichte",
+        "Universität Zürich: Kunsthistorisches Institut" ;
+    dts:citationTrees [ a dts:CitationTree ;
+            dts:citeStructure [ dts:citeStructure [ dts:citeType "paragraph" ] ;
+                    dts:citeType "subchapter" ] ;
+            dts:citeType "chapter" ;
+            dts:identifier "logical_structure" ],
+        [ a dts:CitationTree ;
+            dts:citeType "page" ;
+            dts:identifier "published_page" ],
+        [ a dts:CitationTree ;
+            dts:citeStructure [ dts:citeStructure [ dts:citeType "paragraph" ] ;
+                    dts:citeType "subchapter" ] ;
+            dts:citeType "chapter" ;
+            dts:identifier "logical_structure" ],
+        [ a dts:CitationTree ;
+            dts:citeType "page" ;
+            dts:identifier "published_page" ],
+        [ a dts:CitationTree ;
+            dts:citeType "page" ;
+            dts:identifier "published_page" ],
+        [ a dts:CitationTree ;
+            dts:citeStructure [ dts:citeStructure [ dts:citeType "paragraph" ] ;
+                    dts:citeType "subchapter" ] ;
+            dts:citeType "chapter" ;
+            dts:identifier "logical_structure" ] ;
+    dts:collection "http://rs4.ethz.ch/dts/collection/?id=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs01%2Fapp{&nav}" ;
+    dts:document "http://rs4.ethz.ch/dts/document/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs01%2Fapp{&ref,start,end,tree}" ;
+    dts:dtsVersion "1.0" ;
+    dts:navigation "http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs01%2Fapp{&ref,start,end,tree,down}" ;
+    dts:title "Prolegomena zu einer Psychologie der Architektur" ;
+    dts:totalChildren 0 ;
+    dts:totalParents 1 .
+
+<https://example.org/dts/collections/hwgw/s01/ed> a dts:Resource ;
+    dct:creator "Heinrich Wölfflin" ;
+    dct:editor "Oskar Bätschmann",
+        "Tristan Weddigen" ;
+    dct:language "Deutsch" ;
+    dct:publisher "Bibliotheca Hertziana – Max-Planck-Institut für Kunstgeschichte",
+        "Universität Zürich: Kunsthistorisches Institut" ;
+    dts:citationTrees [ a dts:CitationTree ;
+            dts:citeStructure [ dts:citeStructure [ dts:citeType "paragraph" ] ;
+                    dts:citeType "subchapter" ] ;
+            dts:citeType "chapter" ;
+            dts:identifier "logical_structure" ],
+        [ a dts:CitationTree ;
+            dts:citeStructure [ dts:citeStructure [ dts:citeType "paragraph" ] ;
+                    dts:citeType "subchapter" ] ;
+            dts:citeType "chapter" ;
+            dts:identifier "logical_structure" ],
+        [ a dts:CitationTree ;
+            dts:citeType "page" ;
+            dts:identifier "published_page" ],
+        [ a dts:CitationTree ;
+            dts:citeType "page" ;
+            dts:identifier "published_page" ],
+        [ a dts:CitationTree ;
+            dts:citeType "page" ;
+            dts:identifier "published_page" ],
+        [ a dts:CitationTree ;
+            dts:citeStructure [ dts:citeStructure [ dts:citeType "paragraph" ] ;
+                    dts:citeType "subchapter" ] ;
+            dts:citeType "chapter" ;
+            dts:identifier "logical_structure" ] ;
+    dts:collection "http://rs4.ethz.ch/dts/collection/?id=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs01%2Fed{&nav}" ;
+    dts:document "http://rs4.ethz.ch/dts/document/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs01%2Fed{&ref,start,end,tree}" ;
+    dts:dtsVersion "1.0" ;
+    dts:navigation "http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs01%2Fed{&ref,start,end,tree,down}" ;
+    dts:title "Prolegomena zu einer Psychologie der Architektur" ;
+    dts:totalChildren 0 ;
+    dts:totalParents 1 .
+
+<https://example.org/dts/collections/hwgw/s01/in> a dts:Resource ;
+    dct:creator "Heinrich Wölfflin" ;
+    dct:editor "Oskar Bätschmann",
+        "Tristan Weddigen" ;
+    dct:language "Deutsch" ;
+    dct:publisher "Bibliotheca Hertziana – Max-Planck-Institut für Kunstgeschichte",
+        "Universität Zürich: Kunsthistorisches Institut" ;
+    dts:citationTrees [ a dts:CitationTree ;
+            dts:citeStructure [ dts:citeStructure [ dts:citeType "paragraph" ] ;
+                    dts:citeType "subchapter" ] ;
+            dts:citeType "chapter" ;
+            dts:identifier "logical_structure" ],
+        [ a dts:CitationTree ;
+            dts:citeStructure [ dts:citeStructure [ dts:citeType "paragraph" ] ;
+                    dts:citeType "subchapter" ] ;
+            dts:citeType "chapter" ;
+            dts:identifier "logical_structure" ],
+        [ a dts:CitationTree ;
+            dts:citeType "page" ;
+            dts:identifier "published_page" ],
+        [ a dts:CitationTree ;
+            dts:citeStructure [ dts:citeStructure [ dts:citeType "paragraph" ] ;
+                    dts:citeType "subchapter" ] ;
+            dts:citeType "chapter" ;
+            dts:identifier "logical_structure" ],
+        [ a dts:CitationTree ;
+            dts:citeType "page" ;
+            dts:identifier "published_page" ],
+        [ a dts:CitationTree ;
+            dts:citeType "page" ;
+            dts:identifier "published_page" ] ;
+    dts:collection "http://rs4.ethz.ch/dts/collection/?id=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs01%2Fin{&nav}" ;
+    dts:document "http://rs4.ethz.ch/dts/document/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs01%2Fin{&ref,start,end,tree}" ;
+    dts:dtsVersion "1.0" ;
+    dts:navigation "http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs01%2Fin{&ref,start,end,tree,down}" ;
+    dts:title "Prolegomena zu einer Psychologie der Architektur" ;
+    dts:totalChildren 0 ;
+    dts:totalParents 1 .
+
+<https://example.org/dts/collections/hwgw/s03> a dts:Collection ;
+    dts:collection "http://rs4.ethz.ch/dts/collection/?id=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs03{&nav}" ;
+    dts:dtsVersion "1.0" ;
+    dts:member <https://example.org/dts/collections/hwgw/s03/app>,
+        <https://example.org/dts/collections/hwgw/s03/ed>,
+        <https://example.org/dts/collections/hwgw/s03/in> ;
+    dts:title "Schriften 3" ;
+    dts:totalChildren 3 ;
+    dts:totalParents 1 .
+
+<https://example.org/dts/collections/hwgw/s03/app> a dts:Resource ;
+    dct:creator "Heinrich Wölfflin" ;
+    dct:editor "Oskar Bätschmann",
+        "Tristan Weddigen" ;
+    dct:language "Deutsch" ;
+    dct:publisher "Bibliotheca Hertziana – Max-Planck-Institut für Kunstgeschichte",
+        "Universität Zürich: Kunsthistorisches Institut" ;
+    dts:citationTrees [ a dts:CitationTree ;
+            dts:citeType "page" ;
+            dts:identifier "published_page" ],
+        [ a dts:CitationTree ;
+            dts:citeStructure [ dts:citeStructure [ dts:citeType "paragraph" ] ;
+                    dts:citeType "subchapter" ] ;
+            dts:citeType "chapter" ;
+            dts:identifier "logical_structure" ],
+        [ a dts:CitationTree ;
+            dts:citeType "page" ;
+            dts:identifier "published_page" ],
+        [ a dts:CitationTree ;
+            dts:citeStructure [ dts:citeStructure [ dts:citeType "paragraph" ] ;
+                    dts:citeType "subchapter" ] ;
+            dts:citeType "chapter" ;
+            dts:identifier "logical_structure" ],
+        [ a dts:CitationTree ;
+            dts:citeStructure [ dts:citeStructure [ dts:citeType "paragraph" ] ;
+                    dts:citeType "subchapter" ] ;
+            dts:citeType "chapter" ;
+            dts:identifier "logical_structure" ],
+        [ a dts:CitationTree ;
+            dts:citeType "page" ;
+            dts:identifier "published_page" ] ;
+    dts:collection "http://rs4.ethz.ch/dts/collection/?id=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs03%2Fapp{&nav}" ;
+    dts:document "http://rs4.ethz.ch/dts/document/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs03%2Fapp{&ref,start,end,tree}" ;
+    dts:dtsVersion "1.0" ;
+    dts:navigation "http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs03%2Fapp{&ref,start,end,tree,down}" ;
+    dts:title "Salomon Gessner" ;
+    dts:totalChildren 0 ;
+    dts:totalParents 1 .
+
+<https://example.org/dts/collections/hwgw/s03/ed> a dts:Resource ;
+    dct:creator "Heinrich Wölfflin" ;
+    dct:editor "Oskar Bätschmann",
+        "Tristan Weddigen" ;
+    dct:language "Deutsch" ;
+    dct:publisher "Bibliotheca Hertziana – Max-Planck-Institut für Kunstgeschichte",
+        "Universität Zürich: Kunsthistorisches Institut" ;
+    dts:citationTrees [ a dts:CitationTree ;
+            dts:citeStructure [ dts:citeStructure [ dts:citeType "paragraph" ] ;
+                    dts:citeType "subchapter" ] ;
+            dts:citeType "chapter" ;
+            dts:identifier "logical_structure" ],
+        [ a dts:CitationTree ;
+            dts:citeType "page" ;
+            dts:identifier "published_page" ],
+        [ a dts:CitationTree ;
+            dts:citeStructure [ dts:citeStructure [ dts:citeType "paragraph" ] ;
+                    dts:citeType "subchapter" ] ;
+            dts:citeType "chapter" ;
+            dts:identifier "logical_structure" ],
+        [ a dts:CitationTree ;
+            dts:citeStructure [ dts:citeStructure [ dts:citeType "paragraph" ] ;
+                    dts:citeType "subchapter" ] ;
+            dts:citeType "chapter" ;
+            dts:identifier "logical_structure" ],
+        [ a dts:CitationTree ;
+            dts:citeType "page" ;
+            dts:identifier "published_page" ],
+        [ a dts:CitationTree ;
+            dts:citeType "page" ;
+            dts:identifier "published_page" ] ;
+    dts:collection "http://rs4.ethz.ch/dts/collection/?id=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs03%2Fed{&nav}" ;
+    dts:document "http://rs4.ethz.ch/dts/document/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs03%2Fed{&ref,start,end,tree}" ;
+    dts:dtsVersion "1.0" ;
+    dts:navigation "http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs03%2Fed{&ref,start,end,tree,down}" ;
+    dts:title "Salomon Geßner" ;
+    dts:totalChildren 0 ;
+    dts:totalParents 1 .
+
+<https://example.org/dts/collections/hwgw/s03/in> a dts:Resource ;
+    dct:creator "Heinrich Wölfflin" ;
+    dct:editor "Oskar Bätschmann",
+        "Tristan Weddigen" ;
+    dct:language "Deutsch" ;
+    dct:publisher "Bibliotheca Hertziana – Max-Planck-Institut für Kunstgeschichte",
+        "Universität Zürich: Kunsthistorisches Institut" ;
+    dts:citationTrees [ a dts:CitationTree ;
+            dts:citeStructure [ dts:citeStructure [ dts:citeType "paragraph" ] ;
+                    dts:citeType "subchapter" ] ;
+            dts:citeType "chapter" ;
+            dts:identifier "logical_structure" ],
+        [ a dts:CitationTree ;
+            dts:citeType "page" ;
+            dts:identifier "published_page" ],
+        [ a dts:CitationTree ;
+            dts:citeType "page" ;
+            dts:identifier "published_page" ],
+        [ a dts:CitationTree ;
+            dts:citeStructure [ dts:citeStructure [ dts:citeType "paragraph" ] ;
+                    dts:citeType "subchapter" ] ;
+            dts:citeType "chapter" ;
+            dts:identifier "logical_structure" ],
+        [ a dts:CitationTree ;
+            dts:citeType "page" ;
+            dts:identifier "published_page" ],
+        [ a dts:CitationTree ;
+            dts:citeStructure [ dts:citeStructure [ dts:citeType "paragraph" ] ;
+                    dts:citeType "subchapter" ] ;
+            dts:citeType "chapter" ;
+            dts:identifier "logical_structure" ] ;
+    dts:collection "http://rs4.ethz.ch/dts/collection/?id=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs03%2Fin{&nav}" ;
+    dts:document "http://rs4.ethz.ch/dts/document/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs03%2Fin{&ref,start,end,tree}" ;
+    dts:dtsVersion "1.0" ;
+    dts:navigation "http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs03%2Fin{&ref,start,end,tree,down}" ;
+    dts:title "Salomon Geßner" ;
+    dts:totalChildren 0 ;
+    dts:totalParents 1 .
+
+<https://example.org/dts/collections/hwgw/s04> a dts:Collection ;
+    dts:collection "http://rs4.ethz.ch/dts/collection/?id=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs04{&nav}" ;
+    dts:dtsVersion "1.0" ;
+    dts:member <https://example.org/dts/collections/hwgw/s04/app>,
+        <https://example.org/dts/collections/hwgw/s04/ed>,
+        <https://example.org/dts/collections/hwgw/s04/in> ;
+    dts:title "Schriften 4" ;
+    dts:totalChildren 3 ;
+    dts:totalParents 1 .
+
+<https://example.org/dts/collections/hwgw/s04/app> a dts:Resource ;
+    dct:creator "Heinrich Wölfflin" ;
+    dct:editor "Oskar Bätschmann",
+        "Tristan Weddigen" ;
+    dct:language "Deutsch" ;
+    dct:publisher "Bibliotheca Hertziana – Max-Planck-Institut für Kunstgeschichte",
+        "Universität Zürich: Kunsthistorisches Institut" ;
+    dts:citationTrees [ a dts:CitationTree ;
+            dts:citeStructure [ dts:citeStructure [ dts:citeType "paragraph" ] ;
+                    dts:citeType "subchapter" ] ;
+            dts:citeType "chapter" ;
+            dts:identifier "logical_structure" ],
+        [ a dts:CitationTree ;
+            dts:citeType "page" ;
+            dts:identifier "published_page" ],
+        [ a dts:CitationTree ;
+            dts:citeType "page" ;
+            dts:identifier "published_page" ],
+        [ a dts:CitationTree ;
+            dts:citeType "page" ;
+            dts:identifier "published_page" ],
+        [ a dts:CitationTree ;
+            dts:citeStructure [ dts:citeStructure [ dts:citeType "paragraph" ] ;
+                    dts:citeType "subchapter" ] ;
+            dts:citeType "chapter" ;
+            dts:identifier "logical_structure" ],
+        [ a dts:CitationTree ;
+            dts:citeStructure [ dts:citeStructure [ dts:citeType "paragraph" ] ;
+                    dts:citeType "subchapter" ] ;
+            dts:citeType "chapter" ;
+            dts:identifier "logical_structure" ] ;
+    dts:collection "http://rs4.ethz.ch/dts/collection/?id=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs04%2Fapp{&nav}" ;
+    dts:document "http://rs4.ethz.ch/dts/document/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs04%2Fapp{&ref,start,end,tree}" ;
+    dts:dtsVersion "1.0" ;
+    dts:navigation "http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs04%2Fapp{&ref,start,end,tree,down}" ;
+    dts:title "Die Jugendwerke des Michelangelo" ;
+    dts:totalChildren 0 ;
+    dts:totalParents 1 .
+
+<https://example.org/dts/collections/hwgw/s04/ed> a dts:Resource ;
+    dct:creator "Heinrich Wölfflin" ;
+    dct:editor "Oskar Bätschmann",
+        "Tristan Weddigen" ;
+    dct:language "Deutsch" ;
+    dct:publisher "Bibliotheca Hertziana – Max-Planck-Institut für Kunstgeschichte",
+        "Universität Zürich: Kunsthistorisches Institut" ;
+    dts:citationTrees [ a dts:CitationTree ;
+            dts:citeStructure [ dts:citeStructure [ dts:citeType "paragraph" ] ;
+                    dts:citeType "subchapter" ] ;
+            dts:citeType "chapter" ;
+            dts:identifier "logical_structure" ],
+        [ a dts:CitationTree ;
+            dts:citeType "page" ;
+            dts:identifier "published_page" ],
+        [ a dts:CitationTree ;
+            dts:citeType "page" ;
+            dts:identifier "published_page" ],
+        [ a dts:CitationTree ;
+            dts:citeType "page" ;
+            dts:identifier "published_page" ],
+        [ a dts:CitationTree ;
+            dts:citeStructure [ dts:citeStructure [ dts:citeType "paragraph" ] ;
+                    dts:citeType "subchapter" ] ;
+            dts:citeType "chapter" ;
+            dts:identifier "logical_structure" ],
+        [ a dts:CitationTree ;
+            dts:citeStructure [ dts:citeStructure [ dts:citeType "paragraph" ] ;
+                    dts:citeType "subchapter" ] ;
+            dts:citeType "chapter" ;
+            dts:identifier "logical_structure" ] ;
+    dts:collection "http://rs4.ethz.ch/dts/collection/?id=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs04%2Fed{&nav}" ;
+    dts:document "http://rs4.ethz.ch/dts/document/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs04%2Fed{&ref,start,end,tree}" ;
+    dts:dtsVersion "1.0" ;
+    dts:navigation "http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs04%2Fed{&ref,start,end,tree,down}" ;
+    dts:title "Die Jugendwerke des Michelangelo" ;
+    dts:totalChildren 0 ;
+    dts:totalParents 1 .
+
+<https://example.org/dts/collections/hwgw/s04/in> a dts:Resource ;
+    dct:creator "Heinrich Wölfflin" ;
+    dct:editor "Oskar Bätschmann",
+        "Tristan Weddigen" ;
+    dct:language "Deutsch" ;
+    dct:publisher "Bibliotheca Hertziana – Max-Planck-Institut für Kunstgeschichte",
+        "Universität Zürich: Kunsthistorisches Institut" ;
+    dts:citationTrees [ a dts:CitationTree ;
+            dts:citeType "page" ;
+            dts:identifier "published_page" ],
+        [ a dts:CitationTree ;
+            dts:citeType "page" ;
+            dts:identifier "published_page" ],
+        [ a dts:CitationTree ;
+            dts:citeStructure [ dts:citeStructure [ dts:citeType "paragraph" ] ;
+                    dts:citeType "subchapter" ] ;
+            dts:citeType "chapter" ;
+            dts:identifier "logical_structure" ],
+        [ a dts:CitationTree ;
+            dts:citeStructure [ dts:citeStructure [ dts:citeType "paragraph" ] ;
+                    dts:citeType "subchapter" ] ;
+            dts:citeType "chapter" ;
+            dts:identifier "logical_structure" ],
+        [ a dts:CitationTree ;
+            dts:citeStructure [ dts:citeStructure [ dts:citeType "paragraph" ] ;
+                    dts:citeType "subchapter" ] ;
+            dts:citeType "chapter" ;
+            dts:identifier "logical_structure" ],
+        [ a dts:CitationTree ;
+            dts:citeType "page" ;
+            dts:identifier "published_page" ] ;
+    dts:collection "http://rs4.ethz.ch/dts/collection/?id=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs04%2Fin{&nav}" ;
+    dts:document "http://rs4.ethz.ch/dts/document/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs04%2Fin{&ref,start,end,tree}" ;
+    dts:dtsVersion "1.0" ;
+    dts:navigation "http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs04%2Fin{&ref,start,end,tree,down}" ;
+    dts:title "Die Jugendwerke des Michelangelo" ;
+    dts:totalChildren 0 ;
+    dts:totalParents 1 .
+
