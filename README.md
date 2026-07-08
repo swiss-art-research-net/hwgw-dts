@@ -4,9 +4,11 @@ This repository contains a script that:
 
 1. Connects to a DTS API endpoint.
 2. Recursively traverses collections/resources using the DTS validator client.
-3. Extracts parseable JSON-LD objects.
-4. Merges everything into one RDF graph.
-5. Writes the graph as a Turtle file.
+3. For each discovered resource, queries the navigation endpoint.
+4. Traverses CitationTrees and crawls reachable CitableUnits.
+5. Extracts parseable JSON-LD objects.
+6. Merges everything into one RDF graph.
+7. Writes the graph as a Turtle file.
 
 ## Install
 
