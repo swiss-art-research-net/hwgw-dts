@@ -48,7 +48,33 @@ python scripts/harvest_jsonld_to_ttl.py \
 The crawl shows a live `tqdm` progress bar in terminal. Logging is written to
 `harvest.log` (or the path provided via `--log-file`) to keep stdout clean.
 
+## Entities–passages index
+
+Build a CSV index of TEI `<rs>` mentions linked to DTS CitableUnits for one
+Resource and CitationTree:
+
+```bash
+python scripts/build_entities_passages_index.py \
+  --entrypoint "http://rs4.ethz.ch/dts/" \
+  --resource-id "https://example.org/dts/collections/hwgw/s03/ed" \
+  --tree "logical_structure" \
+  --cite-type "paragraph" \
+  --output "data/output/s03_ed_entities_passages.csv" \
+  --log-file "data/entities_index.log"
+```
+
+Useful options:
+
+- `--tree`: CitationTree identifier (`logical_structure`, `published_page`, …).
+  Defaults to the first tree declared on the resource.
+- `--cite-type`: only index units of that citeType (e.g. `paragraph`).
+- `--leaf-only`: only process deepest-level units in the selected tree.
+- `--max-units`: cap processed units for quick tests.
+
+CSV columns: `rs_type`, `rs_ref`, `rs_text`, `citation_tree`,
+`citable_unit_cite_type`, `citable_unit_id`, `document_uri`.
+
 ## Notes
 
-- The script defaults to `http://rs4.ethz.ch/dts/`.
-- It uses the `DTS_API` client pattern shown in the validator example notebook.
+- The scripts default to `http://rs4.ethz.ch/dts/`.
+- They use the `DTS_API` client pattern shown in the validator example notebook.
