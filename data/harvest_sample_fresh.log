@@ -1,0 +1,104 @@
+2026-06-16 10:08:14,254 INFO [dts_harvest] Initializing DTS client for http://rs4.ethz.ch/dts/
+2026-06-16 10:08:14,354 INFO [root] Skipping validation of required properties in the Entry endpoint JSON
+2026-06-16 10:08:14,355 INFO [dts_harvest] Starting DTS crawl
+2026-06-16 10:08:14,355 INFO [root] URI of request to Collection endpoint: http://rs4.ethz.ch/dts/collection/
+2026-06-16 10:08:14,559 INFO [root] URI of request to Collection endpoint: http://rs4.ethz.ch/dts/collection/?id=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw
+2026-06-16 10:08:14,799 INFO [root] URI of request to Collection endpoint: http://rs4.ethz.ch/dts/collection/?id=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition
+2026-06-16 10:08:15,099 INFO [root] URI of request to Collection endpoint: http://rs4.ethz.ch/dts/collection/?id=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs01
+2026-06-16 10:08:15,341 INFO [root] URI of request to Collection endpoint: http://rs4.ethz.ch/dts/collection/?id=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs01%2Fapp
+2026-06-16 10:08:15,504 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs01%2Fapp&down=1
+2026-06-16 10:08:15,785 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs01%2Fapp&down=-1
+2026-06-16 10:08:16,036 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs01%2Fapp&down=-1
+2026-06-16 10:08:16,220 INFO [root] URI of request to Collection endpoint: http://rs4.ethz.ch/dts/collection/?id=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs01%2Fed
+2026-06-16 10:08:16,374 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs01%2Fed&down=1
+2026-06-16 10:08:16,613 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs01%2Fed&down=-1
+2026-06-16 10:08:16,788 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs01%2Fed&down=-1
+2026-06-16 10:08:16,944 INFO [root] URI of request to Collection endpoint: http://rs4.ethz.ch/dts/collection/?id=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs01%2Fin
+2026-06-16 10:08:17,117 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs01%2Fin&down=1
+2026-06-16 10:08:17,349 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs01%2Fin&down=-1
+2026-06-16 10:08:17,647 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs01%2Fin&down=-1
+2026-06-16 10:08:17,812 INFO [root] URI of request to Collection endpoint: http://rs4.ethz.ch/dts/collection/?id=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs03
+2026-06-16 10:08:18,047 INFO [root] URI of request to Collection endpoint: http://rs4.ethz.ch/dts/collection/?id=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs03%2Fapp
+2026-06-16 10:08:18,208 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs03%2Fapp&down=1
+2026-06-16 10:08:18,432 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs03%2Fapp&down=-1
+2026-06-16 10:08:18,618 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs03%2Fapp&down=-1
+2026-06-16 10:08:18,789 INFO [root] URI of request to Collection endpoint: http://rs4.ethz.ch/dts/collection/?id=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs03%2Fed
+2026-06-16 10:08:18,951 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs03%2Fed&down=1
+2026-06-16 10:08:19,178 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs03%2Fed&down=-1
+2026-06-16 10:08:19,341 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs03%2Fed&down=-1
+2026-06-16 10:08:19,498 INFO [root] URI of request to Collection endpoint: http://rs4.ethz.ch/dts/collection/?id=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs03%2Fin
+2026-06-16 10:08:19,663 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs03%2Fin&down=1
+2026-06-16 10:08:19,891 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs03%2Fin&down=-1
+2026-06-16 10:08:20,103 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs03%2Fin&down=-1
+2026-06-16 10:08:20,330 INFO [root] URI of request to Collection endpoint: http://rs4.ethz.ch/dts/collection/?id=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs04
+2026-06-16 10:08:20,578 INFO [root] URI of request to Collection endpoint: http://rs4.ethz.ch/dts/collection/?id=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs04%2Fapp
+2026-06-16 10:08:20,748 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs04%2Fapp&down=1
+2026-06-16 10:08:20,998 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs04%2Fapp&down=-1
+2026-06-16 10:08:21,180 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs04%2Fapp&down=-1
+2026-06-16 10:08:21,355 INFO [root] URI of request to Collection endpoint: http://rs4.ethz.ch/dts/collection/?id=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs04%2Fed
+2026-06-16 10:08:21,517 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs04%2Fed&down=1
+2026-06-16 10:08:21,735 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs04%2Fed&down=-1
+2026-06-16 10:08:21,891 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs04%2Fed&down=-1
+2026-06-16 10:08:22,058 INFO [root] URI of request to Collection endpoint: http://rs4.ethz.ch/dts/collection/?id=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs04%2Fin
+2026-06-16 10:08:22,230 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs04%2Fin&down=1
+2026-06-16 10:08:22,465 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs04%2Fin&down=-1
+2026-06-16 10:08:22,681 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs04%2Fin&down=-1
+2026-06-16 10:08:22,846 INFO [root] URI of request to Collection endpoint: http://rs4.ethz.ch/dts/collection/?id=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F184
+2026-06-16 10:08:23,088 INFO [root] URI of request to Collection endpoint: http://rs4.ethz.ch/dts/collection/?id=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F184%2F20_Ms_184_1
+2026-06-16 10:08:23,377 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F184%2F20_Ms_184_1&down=1
+2026-06-16 10:08:23,603 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F184%2F20_Ms_184_1&down=-1
+2026-06-16 10:08:23,772 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F184%2F20_Ms_184_1&down=-1
+2026-06-16 10:08:23,945 INFO [root] URI of request to Collection endpoint: http://rs4.ethz.ch/dts/collection/?id=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F184%2F20_Ms_184_2
+2026-06-16 10:08:24,114 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F184%2F20_Ms_184_2&down=1
+2026-06-16 10:08:24,346 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F184%2F20_Ms_184_2&down=-1
+2026-06-16 10:08:24,525 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F184%2F20_Ms_184_2&down=-1
+2026-06-16 10:08:24,703 INFO [root] URI of request to Collection endpoint: http://rs4.ethz.ch/dts/collection/?id=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F184%2F20_Ms_184_3
+2026-06-16 10:08:24,864 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F184%2F20_Ms_184_3&down=1
+2026-06-16 10:08:25,103 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F184%2F20_Ms_184_3&down=-1
+2026-06-16 10:08:25,272 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F184%2F20_Ms_184_3&down=-1
+2026-06-16 10:08:25,441 INFO [root] URI of request to Collection endpoint: http://rs4.ethz.ch/dts/collection/?id=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F184%2F20_Ms_184_4
+2026-06-16 10:08:25,607 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F184%2F20_Ms_184_4&down=1
+2026-06-16 10:08:25,847 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F184%2F20_Ms_184_4&down=-1
+2026-06-16 10:08:26,019 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F184%2F20_Ms_184_4&down=-1
+2026-06-16 10:08:26,172 INFO [root] URI of request to Collection endpoint: http://rs4.ethz.ch/dts/collection/?id=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F185
+2026-06-16 10:08:26,410 INFO [root] URI of request to Collection endpoint: http://rs4.ethz.ch/dts/collection/?id=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F185%2F20_Ms_185_1
+2026-06-16 10:08:26,566 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F185%2F20_Ms_185_1&down=1
+2026-06-16 10:08:26,829 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F185%2F20_Ms_185_1&down=-1
+2026-06-16 10:08:27,015 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F185%2F20_Ms_185_1&down=-1
+2026-06-16 10:08:27,181 INFO [root] URI of request to Collection endpoint: http://rs4.ethz.ch/dts/collection/?id=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F185%2F20_Ms_185_2
+2026-06-16 10:08:27,374 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F185%2F20_Ms_185_2&down=1
+2026-06-16 10:08:27,634 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F185%2F20_Ms_185_2&down=-1
+2026-06-16 10:08:27,849 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F185%2F20_Ms_185_2&down=-1
+2026-06-16 10:08:28,032 INFO [root] URI of request to Collection endpoint: http://rs4.ethz.ch/dts/collection/?id=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F185%2F20_Ms_185_3
+2026-06-16 10:08:28,209 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F185%2F20_Ms_185_3&down=1
+2026-06-16 10:08:28,448 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F185%2F20_Ms_185_3&down=-1
+2026-06-16 10:08:28,716 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F185%2F20_Ms_185_3&down=-1
+2026-06-16 10:08:28,886 INFO [root] URI of request to Collection endpoint: http://rs4.ethz.ch/dts/collection/?id=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F185%2F20_Ms_185_4
+2026-06-16 10:08:29,097 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F185%2F20_Ms_185_4&down=1
+2026-06-16 10:08:29,336 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F185%2F20_Ms_185_4&down=-1
+2026-06-16 10:08:29,534 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F185%2F20_Ms_185_4&down=-1
+2026-06-16 10:08:29,712 INFO [root] URI of request to Collection endpoint: http://rs4.ethz.ch/dts/collection/?id=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F185%2F20_Ms_185_5
+2026-06-16 10:08:29,883 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F185%2F20_Ms_185_5&down=1
+2026-06-16 10:08:30,135 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F185%2F20_Ms_185_5&down=-1
+2026-06-16 10:08:30,343 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F185%2F20_Ms_185_5&down=-1
+2026-06-16 10:08:30,520 INFO [root] URI of request to Collection endpoint: http://rs4.ethz.ch/dts/collection/?id=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F185%2F20_Ms_185_6
+2026-06-16 10:08:30,683 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F185%2F20_Ms_185_6&down=1
+2026-06-16 10:08:30,949 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F185%2F20_Ms_185_6&down=-1
+2026-06-16 10:08:31,104 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F185%2F20_Ms_185_6&down=-1
+2026-06-16 10:08:31,365 INFO [root] URI of request to Collection endpoint: http://rs4.ethz.ch/dts/collection/?id=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F186
+2026-06-16 10:08:31,634 INFO [root] URI of request to Collection endpoint: http://rs4.ethz.ch/dts/collection/?id=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F186%2F20_Ms_186_1
+2026-06-16 10:08:31,793 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F186%2F20_Ms_186_1&down=1
+2026-06-16 10:08:32,041 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F186%2F20_Ms_186_1&down=-1
+2026-06-16 10:08:32,234 INFO [root] URI of request to Navigation endpoint: http://rs4.ethz.ch/dts/navigation/?resource=http%3A%2F%2Fexample%2Forg%2Fdts%2Fsemper%2Fsemper-edition%2F186%2F20_Ms_186_1&down=-1
+2026-06-16 10:08:32,327 WARNING [dts_harvest] Reached max resources cap (20); stopping crawl.
+2026-06-16 10:08:32,836 INFO [dts_harvest] Wrote merged Turtle file to data/output/rs4_sample_fresh.ttl
+2026-06-16 10:08:32,836 INFO [dts_harvest] Collections visited: 8
+2026-06-16 10:08:32,837 INFO [dts_harvest] Resources visited: 20
+2026-06-16 10:08:32,837 INFO [dts_harvest] CitationTrees visited: 40
+2026-06-16 10:08:32,837 INFO [dts_harvest] CitableUnits visited: 182
+2026-06-16 10:08:32,837 INFO [dts_harvest] Navigation requests sent: 60
+2026-06-16 10:08:32,837 INFO [dts_harvest] JSON-LD objects seen: 136
+2026-06-16 10:08:32,837 INFO [dts_harvest] JSON-LD objects deduplicated: 20
+2026-06-16 10:08:32,837 INFO [dts_harvest] JSON-LD objects parsed: 116
+2026-06-16 10:08:32,837 INFO [dts_harvest] JSON-LD objects skipped: 0
+2026-06-16 10:08:32,837 INFO [dts_harvest] Triples written: 10857
