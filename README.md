@@ -48,6 +48,18 @@ python scripts/harvest_jsonld_to_ttl.py \
 The crawl shows a live `tqdm` progress bar in terminal. Logging is written to
 `harvest.log` (or the path provided via `--log-file`) to keep stdout clean.
 
+Harvested Turtle expands DTS endpoint URI templates into resolvable IRIs. For
+each `dts:Resource`, the harvester emits one `dts:navigation` link per declared
+`CitationTree`, with explicit `tree` and `down=-1` parameters, so Resources can
+be linked to their corresponding `dts:Navigation` nodes in the merged graph.
+
+Install the development dependencies and run the regression tests with:
+
+```bash
+python -m pip install -r requirements-dev.txt
+pytest
+```
+
 ## Entities–passages index
 
 Build a CSV index of TEI `<rs>` mentions linked to DTS CitableUnits for one

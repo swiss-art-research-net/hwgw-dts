@@ -9,9 +9,11 @@ import logging
 from dataclasses import dataclass
 from typing import Any
 
+import requests
 from dts_validator.client import DTS_API
 from rdflib import Graph
 from tqdm.auto import tqdm
+from uritemplate import URITemplate
 
 LOGGER = logging.getLogger("dts_harvest")
 DTS_CONTEXT_URL = "https://dtsapi.org/context/v1.0.json"
@@ -136,6 +138,7 @@ def add_jsonld_from_object(
     )
     candidate = ensure_context(candidate, default_context_url=DTS_CONTEXT_URL)
     candidate = _deduplicate_citation_trees_deep(candidate)
+    candidate = normalize_endpoint_links(candidate)
     candidate = _deduplicate_citation_trees_by_resource_id(
         candidate,
         seen_resource_citation_tree_ids,
@@ -262,6 +265,96 @@ def _resource_obj_id(resource: Any) -> str:
     return safe_object_id(getattr(resource, "json", {})) or str(getattr(resource, "id", ""))
 
 
+def _is_uri_template(value: str) -> bool:
+    return "{" in value or "}" in value
+
+
+def expand_endpoint(template: str, **params: Any) -> str:
+    filtered = {key: value for key, value in params.items() if value is not None}
+    return URITemplate(template).expand(filtered)
+
+
+def _tree_identifier(tree: dict[str, Any]) -> str | None:
+    identifier = tree.get("identifier")
+    if isinstance(identifier, str) and identifier.strip():
+        return identifier.strip()
+    return None
+
+
+def _endpoint_node(uri: str) -> dict[str, str]:
+    return {"@id": uri}
+
+
+def _normalize_object_endpoints(node: dict[str, Any]) -> dict[str, Any]:
+    normalized = dict(node)
+    object_id = safe_object_id(normalized)
+    if not object_id:
+        return normalized
+
+    collection_template = normalized.get("collection")
+    if isinstance(collection_template, str) and _is_uri_template(collection_template):
+        normalized["collection"] = _endpoint_node(
+            expand_endpoint(collection_template, id=object_id)
+        )
+
+    document_template = normalized.get("document")
+    if isinstance(document_template, str) and _is_uri_template(document_template):
+        normalized["document"] = _endpoint_node(
+            expand_endpoint(document_template, resource=object_id)
+        )
+
+    navigation_value = normalized.get("navigation")
+    if isinstance(navigation_value, str) and _is_uri_template(navigation_value):
+        trees = _extract_citation_trees(normalized)
+        if str(normalized.get("@type", "")) == "Resource" and trees:
+            navigation_links = [
+                _endpoint_node(
+                    expand_endpoint(
+                        navigation_value,
+                        resource=object_id,
+                        tree=_tree_identifier(tree),
+                        down=-1,
+                    )
+                )
+                for tree in trees
+            ]
+            normalized["navigation"] = navigation_links
+        else:
+            normalized["navigation"] = _endpoint_node(
+                expand_endpoint(navigation_value, resource=object_id, down=-1)
+            )
+
+    return normalized
+
+
+def normalize_endpoint_links(value: Any) -> Any:
+    if isinstance(value, dict):
+        normalized = {key: normalize_endpoint_links(val) for key, val in value.items()}
+        if normalized.get("@type") in {"Resource", "Collection"} or any(
+            key in normalized for key in ("collection", "document", "navigation")
+        ):
+            normalized = _normalize_object_endpoints(normalized)
+        return normalized
+    if isinstance(value, list):
+        return [normalize_endpoint_links(item) for item in value]
+    return value
+
+
+def navigation_uri_for_tree(resource_json: dict[str, Any], tree: dict[str, Any]) -> str | None:
+    navigation_value = resource_json.get("navigation")
+    if not isinstance(navigation_value, str) or not _is_uri_template(navigation_value):
+        return None
+    object_id = safe_object_id(resource_json)
+    if not object_id:
+        return None
+    return expand_endpoint(
+        navigation_value,
+        resource=object_id,
+        tree=_tree_identifier(tree),
+        down=-1,
+    )
+
+
 def _crawl_citable_units_for_tree(
     dts_client: DTS_API,
     resource: Any,
@@ -272,31 +365,46 @@ def _crawl_citable_units_for_tree(
     seen_jsonld_signatures: set[str],
     seen_resource_citation_tree_ids: dict[str, set[str]],
 ) -> None:
-    root_cite_type = str(tree.get("citeType", "")).strip()
-    navigation, response = dts_client.navigation(resource=resource, down=-1)
+    resource_json = getattr(resource, "json", {})
+    tree_id = _tree_identifier(tree) or "<unknown>"
+    navigation_uri = navigation_uri_for_tree(resource_json, tree)
+    if navigation_uri is None:
+        LOGGER.debug(
+            "Missing navigation URI template for resource %s (tree %s)",
+            _resource_obj_id(resource),
+            tree_id,
+        )
+        return
+
+    LOGGER.debug("Fetching navigation for tree %s: %s", tree_id, navigation_uri)
     stats.navigation_requests += 1
-    if response.status_code != 200 or navigation is None:
+    response = requests.get(navigation_uri, timeout=60)
+    if response.status_code != 200:
         LOGGER.debug(
             "CitationTree navigation request failed for resource %s (tree %s): %s",
             _resource_obj_id(resource),
-            root_cite_type or "<unknown>",
+            tree_id,
             response.status_code,
         )
         return
 
+    navigation_json = response.json()
     add_jsonld_from_object(
-        getattr(navigation, "_json", {}),
+        navigation_json,
         graph,
         stats,
         seen_jsonld_signatures,
         seen_resource_citation_tree_ids,
     )
-    for unit in getattr(navigation, "citable_units", []) or []:
-        if root_cite_type and str(getattr(unit, "type", "")) != root_cite_type:
+    for unit in _as_list(navigation_json.get("member")):
+        if not isinstance(unit, dict):
             continue
-        unit_id = str(getattr(unit, "id", ""))
-        if unit_id and unit_id not in seen_citable_unit_ids:
-            seen_citable_unit_ids.add(unit_id)
+        unit_id = str(unit.get("identifier") or "")
+        if not unit_id:
+            continue
+        unit_key = f"{_resource_obj_id(resource)}::{unit_id}"
+        if unit_key not in seen_citable_unit_ids:
+            seen_citable_unit_ids.add(unit_key)
             stats.visited_citable_units += 1
 
 
@@ -351,37 +459,8 @@ def _process_resource(
     except Exception as exc:  # pylint: disable=broad-except
         LOGGER.debug("Resource collection metadata unavailable for %s: %s", resource.id, exc)
 
-    try:
-        navigation, response = dts_client.navigation(resource=resource, down=1)
-        stats.navigation_requests += 1
-    except Exception as exc:  # pylint: disable=broad-except
-        LOGGER.debug("Initial navigation request failed for resource %s: %s", resource.id, exc)
-        return True
-
-    if response.status_code != 200 or navigation is None:
-        LOGGER.debug(
-            "Navigation request returned %s for resource %s",
-            response.status_code,
-            resource.id,
-        )
-        return True
-
-    add_jsonld_from_object(
-        getattr(navigation, "_json", {}),
-        graph,
-        stats,
-        seen_jsonld_signatures,
-        seen_resource_citation_tree_ids,
-    )
-    nav_resource_json = getattr(getattr(navigation, "resource", None), "json", {})
-    add_jsonld_from_object(
-        nav_resource_json,
-        graph,
-        stats,
-        seen_jsonld_signatures,
-        seen_resource_citation_tree_ids,
-    )
-    citation_trees = _extract_citation_trees(nav_resource_json)
+    resource_json = getattr(resource, "json", {})
+    citation_trees = _extract_citation_trees(resource_json)
     for tree in citation_trees:
         signature = _citation_tree_signature(tree)
         dedupe_key = (resource_id, signature)
