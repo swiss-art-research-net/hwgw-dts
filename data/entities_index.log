@@ -1,14 +1,14 @@
-2026-07-21 08:37:57,497 INFO [dts_entities_index] Initializing DTS client for http://rs4.ethz.ch/dts/
-2026-07-21 08:37:57,604 INFO [root] Skipping validation of required properties in the Entry endpoint JSON
-2026-07-21 08:37:57,605 INFO [dts_entities_index] Loading resource https://example.org/dts/collections/hwgw/s03/ed
-2026-07-21 08:37:57,606 INFO [root] URI of request to Collection endpoint: http://rs4.ethz.ch/dts/collection/?id=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs03%2Fed
-2026-07-21 08:37:57,691 INFO [dts_entities_index] Using CitationTree: logical_structure
-2026-07-21 08:37:57,692 INFO [dts_entities_index] Fetching CitableUnits: http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs03%2Fed&tree=logical_structure&down=-1
-2026-07-21 08:37:57,777 INFO [dts_entities_index] Selected 15/27 CitableUnits (cite_type=paragraph, leaf_only=False)
-2026-07-21 08:37:59,801 INFO [dts_entities_index] Wrote entities–passages index to data/output/s03_ed_entities_passages.csv
-2026-07-21 08:37:59,802 INFO [dts_entities_index] CitationTrees available: 2
-2026-07-21 08:37:59,802 INFO [dts_entities_index] CitableUnits seen: 27
-2026-07-21 08:37:59,802 INFO [dts_entities_index] CitableUnits processed: 15
-2026-07-21 08:37:59,802 INFO [dts_entities_index] Document requests: 15
-2026-07-21 08:37:59,802 INFO [dts_entities_index] Document failures: 0
-2026-07-21 08:37:59,802 INFO [dts_entities_index] rs mentions indexed: 62
+2026-07-21 09:27:40,150 INFO [dts_entities_index] Initializing DTS client for http://rs4.ethz.ch/dts/
+2026-07-21 09:27:40,260 INFO [root] Skipping validation of required properties in the Entry endpoint JSON
+2026-07-21 09:27:40,262 INFO [dts_entities_index] Loading resource https://example.org/dts/collections/hwgw/s03/ed
+2026-07-21 09:27:40,262 INFO [root] URI of request to Collection endpoint: http://rs4.ethz.ch/dts/collection/?id=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs03%2Fed
+2026-07-21 09:27:40,362 INFO [dts_entities_index] Using CitationTree: published_page
+2026-07-21 09:27:40,362 INFO [dts_entities_index] Fetching CitableUnits: http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs03%2Fed&tree=published_page&down=-1
+2026-07-21 09:27:40,464 INFO [dts_entities_index] Selected 142/142 CitableUnits (cite_type=page, leaf_only=False)
+2026-07-21 09:28:01,279 INFO [dts_entities_index] Wrote entities–passages index to data/output/s03_ed_entities_passages.csv
+2026-07-21 09:28:01,279 INFO [dts_entities_index] CitationTrees available: 2
+2026-07-21 09:28:01,279 INFO [dts_entities_index] CitableUnits seen: 142
+2026-07-21 09:28:01,279 INFO [dts_entities_index] CitableUnits processed: 142
+2026-07-21 09:28:01,279 INFO [dts_entities_index] Document requests: 142
+2026-07-21 09:28:01,279 INFO [dts_entities_index] Document failures: 0
+2026-07-21 09:28:01,279 INFO [dts_entities_index] rs mentions indexed: 2561
