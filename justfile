@@ -115,3 +115,10 @@ pipeline-all: harvest fetch-external-index index
 # Quick smoke test: sample harvest + capped index + combine.
 pipeline-quick: harvest-sample index-sample
     @just combine harvest=data/harvest/rs4_sample.ttl
+
+# Extract a single-document Turtle sample from the combined graph.
+document-sample unit_id="s03-pg85" combined="data/combined/s03_ed_combined.ttl": dirs
+    python scripts/extract_document_sample.py \
+        --input "{{combined}}" \
+        --unit-id "{{unit_id}}" \
+        --output "data/samples/{{unit_id}}_document.ttl"

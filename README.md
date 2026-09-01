@@ -144,6 +144,19 @@ a collection-only subset).
 External index CSV columns: `type`, `crm`, `local_id`, `uri`. Rows are joined
 on `entities_passages.rs_ref = external_index.local_id`.
 
+## Document sample
+
+Extract a self-contained Turtle subgraph for one CitableUnit (for review or
+sharing):
+
+```bash
+just combine
+just document-sample unit_id=s03-pg85
+```
+
+Output: `data/samples/s03-pg85_document.ttl` — DTS Resource/Navigation,
+CRM/CRMdig enrichment, and `crm:P67_refers_to` links to HWGW entities.
+
 ## Notes
 
 - Scripts default to `http://rs4.ethz.ch/dts/`.

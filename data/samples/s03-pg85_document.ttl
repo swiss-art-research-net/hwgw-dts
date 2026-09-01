@@ -1,0 +1,108 @@
+# HWGW DTS document sample: CitableUnit 's03-pg85'
+#
+# Layers:
+#   1. dts:Resource + dts:Navigation (citation layer)
+#   2. dts:CitableUnit → crmdig:D1_Digital_Object (CRM bridge)
+#   3. crm:P67_refers_to → HWGW entity URIs (passage mentions)
+#
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix crmdig: <http://www.ics.forth.gr/isl/CRMdig/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dts: <https://dtsapi.org/v1.0#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs03%2Fed&tree=published_page&down=-1> a dts:Navigation ;
+    dts:dtsVersion "1.0" ;
+    dts:member [ a dts:CitableUnit ;
+            crm:P138i_has_representation <https://hwgw.uzh.ch/dts/s03-pg85> ;
+            dts:citeType "page" ;
+            dts:identifier "s03-pg85" ;
+            dts:level 1 ] ;
+    dts:resource <https://example.org/dts/collections/hwgw/s03/ed> .
+
+<https://example.org/dts/collections/hwgw/s03/ed> a dts:Resource ;
+    dct:creator "Heinrich Wölfflin" ;
+    dct:editor "Oskar Bätschmann",
+        "Tristan Weddigen" ;
+    dct:language "Deutsch" ;
+    dct:publisher "Bibliotheca Hertziana – Max-Planck-Institut für Kunstgeschichte",
+        "Universität Zürich: Kunsthistorisches Institut" ;
+    dts:citationTrees [ a dts:CitationTree ;
+            dts:citeStructure [ dts:citeStructure [ dts:citeType "paragraph" ] ;
+                    dts:citeType "subchapter" ] ;
+            dts:citeType "chapter" ;
+            dts:identifier "logical_structure" ],
+        [ a dts:CitationTree ;
+            dts:citeType "page" ;
+            dts:identifier "published_page" ] ;
+    dts:collection <http://rs4.ethz.ch/dts/collection/?id=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs03%2Fed> ;
+    dts:document <http://rs4.ethz.ch/dts/document/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs03%2Fed> ;
+    dts:dtsVersion "1.0" ;
+    dts:navigation <http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs03%2Fed&tree=logical_structure&down=-1>,
+        <http://rs4.ethz.ch/dts/navigation/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs03%2Fed&tree=published_page&down=-1> ;
+    dts:title "Salomon Geßner" ;
+    dts:totalChildren 0 ;
+    dts:totalParents 1 .
+
+<https://hwgw.uzh.ch/dts/s03-pg85> a crmdig:D1_Digital_Object ;
+    crm:P1_is_identified_by [ a crm:E42_Identifier ;
+            crm:P2_has_type [ a crm:E55_Type ;
+                    rdfs:label "DTS Document URI"@en ] ;
+            rdf:value "http://rs4.ethz.ch/dts/document/?resource=https%3A%2F%2Fexample.org%2Fdts%2Fcollections%2Fhwgw%2Fs03%2Fed&ref=s03-pg85&tree=published_page"^^xsd:anyURI ] ;
+    crm:P67_refers_to <https://hwgw.uzh.ch/organization/gnd-1012546-2>,
+        <https://hwgw.uzh.ch/organization/gnd-17078-1>,
+        <https://hwgw.uzh.ch/organization/gnd-500580-2>,
+        <https://hwgw.uzh.ch/person/gnd-102121982>,
+        <https://hwgw.uzh.ch/person/gnd-116782544>,
+        <https://hwgw.uzh.ch/person/gnd-11701348X>,
+        <https://hwgw.uzh.ch/person/gnd-117184934>,
+        <https://hwgw.uzh.ch/person/gnd-117373192>,
+        <https://hwgw.uzh.ch/person/gnd-118538969>,
+        <https://hwgw.uzh.ch/person/gnd-118567780>,
+        <https://hwgw.uzh.ch/person/gnd-118634496>,
+        <https://hwgw.uzh.ch/person/gnd-118674315>,
+        <https://hwgw.uzh.ch/person/gnd-118717758>,
+        <https://hwgw.uzh.ch/person/gnd-118731890>,
+        <https://hwgw.uzh.ch/person/gnd-119059614>,
+        <https://hwgw.uzh.ch/person/gnd-1299578438>,
+        <https://hwgw.uzh.ch/place/gnd-4051993-4>,
+        <https://hwgw.uzh.ch/place/gnd-4068038-1> .
+
+<https://hwgw.uzh.ch/organization/gnd-1012546-2> a crm:E74_Group .
+
+<https://hwgw.uzh.ch/organization/gnd-17078-1> a crm:E74_Group .
+
+<https://hwgw.uzh.ch/organization/gnd-500580-2> a crm:E74_Group .
+
+<https://hwgw.uzh.ch/person/gnd-102121982> a crm:E21_Person .
+
+<https://hwgw.uzh.ch/person/gnd-116782544> a crm:E21_Person .
+
+<https://hwgw.uzh.ch/person/gnd-11701348X> a crm:E21_Person .
+
+<https://hwgw.uzh.ch/person/gnd-117184934> a crm:E21_Person .
+
+<https://hwgw.uzh.ch/person/gnd-117373192> a crm:E21_Person .
+
+<https://hwgw.uzh.ch/person/gnd-118538969> a crm:E21_Person .
+
+<https://hwgw.uzh.ch/person/gnd-118567780> a crm:E21_Person .
+
+<https://hwgw.uzh.ch/person/gnd-118634496> a crm:E21_Person .
+
+<https://hwgw.uzh.ch/person/gnd-118674315> a crm:E21_Person .
+
+<https://hwgw.uzh.ch/person/gnd-118717758> a crm:E21_Person .
+
+<https://hwgw.uzh.ch/person/gnd-118731890> a crm:E21_Person .
+
+<https://hwgw.uzh.ch/person/gnd-119059614> a crm:E21_Person .
+
+<https://hwgw.uzh.ch/person/gnd-1299578438> a crm:E21_Person .
+
+<https://hwgw.uzh.ch/place/gnd-4051993-4> a crm:E53_Place .
+
+<https://hwgw.uzh.ch/place/gnd-4068038-1> a crm:E53_Place .
+
