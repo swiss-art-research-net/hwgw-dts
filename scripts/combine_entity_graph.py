@@ -323,7 +323,7 @@ def _ensure_citable_unit_structure(
         return False
 
     do_uri = digital_object_uri(unit_id)
-    graph.add((cu_node, CRM.P138i_has_representation, do_uri))
+    graph.add((cu_node, CRM.P67_refers_to, do_uri))
 
     graph.add((do_uri, RDF.type, CRMDIG.D1_Digital_Object))
 
@@ -432,9 +432,10 @@ def _add_passage_entity_triples(
 
     Reuses existing blank-node ``dts:CitableUnit`` nodes from the harvested
     graph (matched by ``dts:identifier``). Units absent from the harvest are
-    skipped. Each linked unit gets ``crm:P138i_has_representation`` to a
+    skipped. Each linked unit gets ``crm:P67_refers_to`` to a
     ``crmdig:D1_Digital_Object`` carrying the DTS document URI as an
-    ``crm:E42_Identifier``.
+    ``crm:E42_Identifier``. Each distinct entity referenced on that unit adds
+    ``crm:P67_refers_to`` from the D1 to the mapped HWGW entity URI.
     """
     if not _ensure_citable_unit_structure(
         graph=graph,

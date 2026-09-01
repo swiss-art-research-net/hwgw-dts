@@ -187,6 +187,8 @@ def main() -> int:
     crm_classes = load_external_crm_classes(external_index) if external_index.is_file() else {}
 
     sample = extract_sample(source, args.unit_id.strip(), crm_classes)
+    digital_object = URIRef(f"{HWGW_DTS_BASE}{args.unit_id.strip()}")
+    entity_link_count = len(list(sample.triples((digital_object, CRM.P67_refers_to, None))))
 
     output_path = Path(args.output)
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -198,7 +200,7 @@ def main() -> int:
         "#\n"
         "# Layers:\n"
         "#   1. dts:Resource + dts:Navigation (citation layer)\n"
-        "#   2. dts:CitableUnit → crmdig:D1_Digital_Object (CRM bridge)\n"
+        "#   2. dts:CitableUnit → crmdig:D1_Digital_Object (CRM bridge via P67_refers_to)\n"
         "#   3. crm:P67_refers_to → HWGW entity URIs (passage mentions)\n"
         "#\n"
     )
@@ -207,7 +209,7 @@ def main() -> int:
     print(
         f"Wrote {len(sample)} triples for CitableUnit {args.unit_id!r} "
         f"to {output_path} ({len(list(sample.subjects(RDF.type, CRMDIG.D1_Digital_Object)))} D1, "
-        f"{len(list(sample.triples((None, CRM.P67_refers_to, None))))} entity links)."
+        f"{entity_link_count} entity links)."
     )
     return 0
 

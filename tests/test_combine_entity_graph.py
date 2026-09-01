@@ -66,7 +66,7 @@ def test_links_existing_blank_node_citable_unit_to_digital_object() -> None:
     citable_units = list(graph.subjects(RDF.type, DTS.CitableUnit))
     assert len(citable_units) == 1
     assert citable_units[0] == existing_unit
-    assert (existing_unit, CRM.P138i_has_representation, do_uri) in graph
+    assert (existing_unit, CRM.P67_refers_to, do_uri) in graph
 
     assert (do_uri, RDF.type, CRMDIG.D1_Digital_Object) in graph
     assert (do_uri, CRM.P67_refers_to, entity_uri) in graph
