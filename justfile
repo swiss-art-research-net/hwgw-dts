@@ -6,6 +6,7 @@ tree := "published_page"
 cite_type := "page"
 
 harvest_ttl := "data/harvest/rs4_sample_fresh.ttl"
+harvest_log := "data/logs/harvest.log"
 index_csv := "data/index/s03_ed_entities_passages.csv"
 external_index := "data/external/register-entity-index.csv"
 combined_ttl := "data/combined/s03_ed_combined.ttl"
@@ -31,6 +32,15 @@ install-dev:
 test:
     pytest
 
+# Verify pipeline data integrity across harvest, index, and combine steps.
+verify harvest=harvest_ttl combined=combined_ttl: dirs
+    python scripts/verify_pipeline.py \
+        --harvest-ttl "{{harvest}}" \
+        --harvest-log "{{harvest_log}}" \
+        --entities-passages "{{index_csv}}" \
+        --external-index "{{external_index}}" \
+        --combined-ttl "{{combined}}"
+
 # Remove generated outputs (logs, combined RDF, external downloads).
 # Committed samples in data/harvest/ and data/index/ are kept.
 clean:
@@ -47,7 +57,8 @@ clean:
 harvest: dirs
     python scripts/harvest_jsonld_to_ttl.py \
         --entrypoint "{{entrypoint}}" \
-        --output data/harvest/merged.ttl
+        --output data/harvest/merged.ttl \
+        --log-file "{{harvest_log}}"
 
 # Quick harvest for smoke tests (20 resources).
 harvest-sample: dirs

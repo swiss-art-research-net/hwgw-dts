@@ -63,6 +63,7 @@ pytest
 | `just pipeline` | `fetch-external-index` → `index` → `combine` |
 | `just pipeline-all` | Full harvest + pipeline |
 | `just pipeline-quick` | Sample harvest + capped index + combine |
+| `just verify` | Check data integrity across pipeline outputs |
 
 Override paths via recipe parameters, e.g.
 `just combine harvest=data/harvest/merged.ttl`.
@@ -156,6 +157,30 @@ just document-sample unit_id=s03-pg85
 
 Output: `data/samples/s03-pg85_document.ttl` — DTS Resource/Navigation,
 CRM/CRMdig enrichment, and `crm:P67_refers_to` links to HWGW entities.
+
+## Verify pipeline integrity
+
+Check that harvest counts match the TTL export, entities in the passages
+index appear in the register, and entity–passage pairs are present in the
+combined graph:
+
+```bash
+just combine
+just verify
+```
+
+Or explicitly:
+
+```bash
+python scripts/verify_pipeline.py \
+  --harvest-ttl data/harvest/rs4_sample_fresh.ttl \
+  --harvest-log data/logs/harvest.log \
+  --entities-passages data/index/s03_ed_entities_passages.csv \
+  --external-index data/external/register-entity-index.csv \
+  --combined-ttl data/combined/s03_ed_combined.ttl
+```
+
+The script exits with code 1 when any check fails.
 
 ## Notes
 
