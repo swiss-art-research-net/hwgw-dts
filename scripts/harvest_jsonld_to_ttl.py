@@ -55,7 +55,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--output",
-        default="merged.ttl",
+        default="data/harvest/merged.ttl",
         help="Path to output Turtle file.",
     )
     parser.add_argument(
@@ -77,7 +77,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--log-file",
-        default="harvest.log",
+        default="data/logs/harvest.log",
         help="Path to log file (logging is written here, not stdout).",
     )
     return parser

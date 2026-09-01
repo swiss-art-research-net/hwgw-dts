@@ -107,7 +107,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--output",
-        default="entities_passages_index.csv",
+        default="data/index/entities_passages_index.csv",
         help="Path to output CSV index.",
     )
     parser.add_argument(
@@ -118,7 +118,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--log-file",
-        default="entities_index.log",
+        default="data/logs/entities_index.log",
         help="Path to log file (logging is written here, not stdout).",
     )
     return parser

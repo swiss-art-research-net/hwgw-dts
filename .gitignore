@@ -1,2 +1,9 @@
 .python-version
-__pycache__
+__pycache__/
+.pytest_cache/
+.DS_Store
+
+# Generated pipeline artefacts (regenerable)
+data/logs/
+data/combined/
+data/external/

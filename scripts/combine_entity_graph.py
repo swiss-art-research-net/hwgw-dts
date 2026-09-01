@@ -146,7 +146,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--output",
-        default="combined.ttl",
+        default="data/combined/combined.ttl",
         help="Path to output Turtle file.",
     )
     parser.add_argument(
@@ -157,7 +157,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--log-file",
-        default="combine_entity_graph.log",
+        default="data/logs/combine_entity_graph.log",
         help="Path to log file (logging is written here, not stdout).",
     )
     return parser
