@@ -65,8 +65,8 @@ pytest
 | `just pipeline-quick` | Sample harvest + capped index + combine |
 | `just verify` | Check data integrity across pipeline outputs |
 
-Override paths via recipe parameters, e.g.
-`just combine harvest=data/harvest/merged.ttl`.
+Override paths via positional recipe arguments, e.g.
+`just combine data/harvest/merged.ttl` or `just verify data/harvest/hwgw.ttl`.
 
 ## 1. Harvest JSON-LD
 
