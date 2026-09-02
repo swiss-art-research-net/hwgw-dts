@@ -63,10 +63,53 @@ pytest
 | `just pipeline` | `fetch-external-index` → `index` → `combine` |
 | `just pipeline-all` | Full harvest + pipeline |
 | `just pipeline-quick` | Sample harvest + capped index + combine |
+| `just pipeline-hwgw` | HWGW collection subset pipeline (see below) |
 | `just verify` | Check data integrity across pipeline outputs |
 
 Override paths via positional recipe arguments, e.g.
 `just combine data/harvest/merged.ttl` or `just verify data/harvest/hwgw.ttl`.
+
+### HWGW subset recipes
+
+These recipes target the HWGW collection subtree on the RS4 DTS endpoint
+(`https://example.org/dts/collections/hwgw`, volumes s01, s03, s04, …) rather
+than the full RS4 crawl. They are the usual entry point for working on HWGW
+edition data.
+
+| Recipe | Description |
+|---|---|
+| `just harvest-hwgw` | Harvest HWGW collection → `data/harvest/hwgw.ttl` |
+| `just index-hwgw` | Build entities–passages index for the HWGW collection |
+| `just combine-hwgw` | Combine HWGW harvest + index + register |
+| `just pipeline-hwgw` | End-to-end: `harvest-hwgw` → `fetch-external-index` → `index` → combine |
+| `just verify-hwgw` | Verify integrity using HWGW harvest and combined outputs |
+
+Default HWGW paths (defined at the top of the `justfile`):
+
+| Variable | Path |
+|---|---|
+| Harvest TTL | `data/harvest/hwgw.ttl` |
+| Harvest log | `data/logs/harvest-hwgw.log` |
+| Entities–passages index | `data/index/hwgw_entities_passages.csv` |
+| Combined RDF | `data/combined/hwgw_combined.ttl` |
+
+Run the full HWGW pipeline:
+
+```bash
+just pipeline-hwgw
+```
+
+Then verify and extract a document sample:
+
+```bash
+just verify-hwgw
+just document-sample combined=data/combined/hwgw_combined.ttl unit_id=s03-pg85
+```
+
+The default `just index` recipe indexes the s03/ed resource
+(`published_page` / `page` cite type) into the same
+`hwgw_entities_passages.csv` used by the HWGW combine step; `pipeline-hwgw`
+calls that recipe rather than `index-hwgw`.
 
 ## 1. Harvest JSON-LD
 
