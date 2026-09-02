@@ -5,5 +5,4 @@ __pycache__/
 
 # Generated pipeline artefacts (regenerable)
 data/logs/
-data/combined/
 data/external/
