@@ -16,6 +16,7 @@ import logging
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass, field
 from typing import Any, Iterator
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 import requests
 from dts_validator.client import DTS_API, DTS_Resource
@@ -72,6 +73,12 @@ def build_parser() -> argparse.ArgumentParser:
         "--entrypoint",
         default="http://rs4.ethz.ch/dts/",
         help="DTS entry endpoint URL.",
+    )
+    parser.add_argument(
+        "--endpoint-style",
+        choices=["auto", "uri-template", "concrete"],
+        default="auto",
+        help="Endpoint URL style; auto detects URI templates and concrete URLs.",
     )
     parser.add_argument(
         "--resource-id",
@@ -190,17 +197,28 @@ def load_resource(dts_client: DTS_API, resource_id: str) -> DTS_Resource:
     return DTS_Resource(resource_json)
 
 
-def expand_endpoint(template: str, **params: Any) -> str:
+def expand_endpoint(template: str, endpoint_style: str, **params: Any) -> str:
     filtered = {key: value for key, value in params.items() if value is not None}
-    return URITemplate(template).expand(filtered)
+    is_template = "{" in template or "}" in template
+    if endpoint_style == "uri-template" or (endpoint_style == "auto" and is_template):
+        return URITemplate(template).expand(filtered)
+
+    parsed = urlsplit(template)
+    query = dict(parse_qsl(parsed.query, keep_blank_values=True))
+    query.update(filtered)
+    return urlunsplit((
+        parsed.scheme, parsed.netloc, parsed.path, urlencode(query), parsed.fragment
+    ))
 
 
 def fetch_citable_units(
     resource: DTS_Resource,
     tree: str | None,
+    endpoint_style: str,
 ) -> tuple[list[dict[str, Any]], str]:
     navigation_uri = expand_endpoint(
         resource.json["navigation"],
+        endpoint_style=endpoint_style,
         resource=resource.id,
         down=-1,
         tree=tree,
@@ -245,9 +263,11 @@ def document_uri_for_unit(
     resource: DTS_Resource,
     unit_id: str,
     tree: str | None,
+    endpoint_style: str,
 ) -> str:
     return expand_endpoint(
         resource.json["document"],
+        endpoint_style=endpoint_style,
         resource=resource.id,
         ref=unit_id,
         tree=tree,
@@ -295,10 +315,11 @@ def build_index(
     cite_type: str | None,
     leaf_only: bool,
     max_units: int | None,
+    endpoint_style: str,
 ) -> BuildResult:
     result = BuildResult()
     tree_param = tree_parameter(tree)
-    units, _ = fetch_citable_units(resource, tree_param)
+    units, _ = fetch_citable_units(resource, tree_param, endpoint_style)
     result.stats.citable_units_seen = len(units)
     selected_units = filter_citable_units(units, cite_type=cite_type, leaf_only=leaf_only)
     LOGGER.info(
@@ -321,7 +342,7 @@ def build_index(
                 LOGGER.debug("Skipping CitableUnit without identifier: %s", unit)
                 continue
 
-            doc_uri = document_uri_for_unit(resource, unit_id, tree_param)
+            doc_uri = document_uri_for_unit(resource, unit_id, tree_param, endpoint_style)
             LOGGER.debug("Fetching document: %s", doc_uri)
             result.stats.document_requests += 1
             response = requests.get(doc_uri, timeout=60)
@@ -400,6 +421,7 @@ def main() -> int:
         cite_type=args.cite_type,
         leaf_only=args.leaf_only,
         max_units=args.max_units,
+        endpoint_style=args.endpoint_style,
     )
     result.stats.citation_trees_available = stats_preview.citation_trees_available
 

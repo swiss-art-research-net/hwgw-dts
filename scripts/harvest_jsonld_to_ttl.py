@@ -8,6 +8,7 @@ import json
 import logging
 from dataclasses import dataclass
 from typing import Any
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 import requests
 from dts_validator.client import DTS_API
@@ -52,6 +53,12 @@ def build_parser() -> argparse.ArgumentParser:
         "--entrypoint",
         default="http://rs4.ethz.ch/dts/",
         help="DTS entry endpoint URL.",
+    )
+    parser.add_argument(
+        "--endpoint-style",
+        choices=["auto", "uri-template", "concrete"],
+        default="auto",
+        help="Endpoint URL style; auto detects URI templates and concrete URLs.",
     )
     parser.add_argument(
         "--output",
@@ -269,9 +276,18 @@ def _is_uri_template(value: str) -> bool:
     return "{" in value or "}" in value
 
 
-def expand_endpoint(template: str, **params: Any) -> str:
+def expand_endpoint(template: str, endpoint_style: str = "auto", **params: Any) -> str:
     filtered = {key: value for key, value in params.items() if value is not None}
-    return URITemplate(template).expand(filtered)
+    is_template = _is_uri_template(template)
+    if endpoint_style == "uri-template" or (endpoint_style == "auto" and is_template):
+        return URITemplate(template).expand(filtered)
+
+    parsed = urlsplit(template)
+    query = dict(parse_qsl(parsed.query, keep_blank_values=True))
+    query.update(filtered)
+    return urlunsplit((
+        parsed.scheme, parsed.netloc, parsed.path, urlencode(query), parsed.fragment
+    ))
 
 
 def _tree_identifier(tree: dict[str, Any]) -> str | None:
@@ -285,7 +301,7 @@ def _endpoint_node(uri: str) -> dict[str, str]:
     return {"@id": uri}
 
 
-def _normalize_object_endpoints(node: dict[str, Any]) -> dict[str, Any]:
+def _normalize_object_endpoints(node: dict[str, Any], endpoint_style: str) -> dict[str, Any]:
     normalized = dict(node)
     object_id = safe_object_id(normalized)
     if not object_id:
@@ -311,6 +327,7 @@ def _normalize_object_endpoints(node: dict[str, Any]) -> dict[str, Any]:
                 _endpoint_node(
                     expand_endpoint(
                         navigation_value,
+                        endpoint_style=endpoint_style,
                         resource=object_id,
                         tree=_tree_identifier(tree),
                         down=-1,
@@ -327,28 +344,33 @@ def _normalize_object_endpoints(node: dict[str, Any]) -> dict[str, Any]:
     return normalized
 
 
-def normalize_endpoint_links(value: Any) -> Any:
+def normalize_endpoint_links(value: Any, endpoint_style: str = "auto") -> Any:
     if isinstance(value, dict):
-        normalized = {key: normalize_endpoint_links(val) for key, val in value.items()}
+        normalized = {
+            key: normalize_endpoint_links(val, endpoint_style) for key, val in value.items()
+        }
         if normalized.get("@type") in {"Resource", "Collection"} or any(
             key in normalized for key in ("collection", "document", "navigation")
         ):
-            normalized = _normalize_object_endpoints(normalized)
+            normalized = _normalize_object_endpoints(normalized, endpoint_style)
         return normalized
     if isinstance(value, list):
-        return [normalize_endpoint_links(item) for item in value]
+        return [normalize_endpoint_links(item, endpoint_style) for item in value]
     return value
 
 
-def navigation_uri_for_tree(resource_json: dict[str, Any], tree: dict[str, Any]) -> str | None:
+def navigation_uri_for_tree(
+    resource_json: dict[str, Any], tree: dict[str, Any], endpoint_style: str
+) -> str | None:
     navigation_value = resource_json.get("navigation")
-    if not isinstance(navigation_value, str) or not _is_uri_template(navigation_value):
+    if not isinstance(navigation_value, str):
         return None
     object_id = safe_object_id(resource_json)
     if not object_id:
         return None
     return expand_endpoint(
         navigation_value,
+        endpoint_style=endpoint_style,
         resource=object_id,
         tree=_tree_identifier(tree),
         down=-1,
@@ -364,10 +386,11 @@ def _crawl_citable_units_for_tree(
     seen_citable_unit_ids: set[str],
     seen_jsonld_signatures: set[str],
     seen_resource_citation_tree_ids: dict[str, set[str]],
+    endpoint_style: str,
 ) -> None:
     resource_json = getattr(resource, "json", {})
     tree_id = _tree_identifier(tree) or "<unknown>"
-    navigation_uri = navigation_uri_for_tree(resource_json, tree)
+    navigation_uri = navigation_uri_for_tree(resource_json, tree, endpoint_style)
     if navigation_uri is None:
         LOGGER.debug(
             "Missing navigation URI template for resource %s (tree %s)",
@@ -420,6 +443,7 @@ def _process_resource(
     seen_resource_citation_tree_ids: dict[str, set[str]],
     max_resources: int | None,
     pbar: tqdm,
+    endpoint_style: str,
 ) -> bool:
     resource_id = _resource_obj_id(resource)
     if resource_id in seen_resource_ids:
@@ -477,6 +501,7 @@ def _process_resource(
             seen_citable_unit_ids=seen_citable_unit_ids,
             seen_jsonld_signatures=seen_jsonld_signatures,
             seen_resource_citation_tree_ids=seen_resource_citation_tree_ids,
+            endpoint_style=endpoint_style,
         )
 
     pbar.set_postfix(
@@ -494,6 +519,7 @@ def crawl(
     stats: HarvestStats,
     max_resources: int | None,
     collection_id: str | None,
+    endpoint_style: str,
 ) -> None:
     visited_collection_ids: set[str] = set()
     visited_resource_ids: set[str] = set()
@@ -591,6 +617,7 @@ def crawl(
                         seen_resource_citation_tree_ids=seen_resource_citation_tree_ids,
                         max_resources=max_resources,
                         pbar=pbar,
+                        endpoint_style=endpoint_style,
                     )
                     if not should_continue:
                         return
@@ -610,7 +637,14 @@ def main() -> int:
     dts_client = DTS_API(args.entrypoint, enable_validation=False)
 
     LOGGER.info("Starting DTS crawl")
-    crawl(dts_client, graph, stats, args.max_resources, args.collection_id)
+    crawl(
+        dts_client,
+        graph,
+        stats,
+        args.max_resources,
+        args.collection_id,
+        args.endpoint_style,
+    )
 
     graph.serialize(destination=args.output, format="turtle")
     LOGGER.info("Wrote merged Turtle file to %s", args.output)
