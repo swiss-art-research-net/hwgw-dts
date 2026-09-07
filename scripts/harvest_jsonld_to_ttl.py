@@ -56,9 +56,9 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--endpoint-style",
-        choices=["auto", "uri-template", "concrete"],
-        default="auto",
-        help="Endpoint URL style; auto detects URI templates and concrete URLs.",
+        choices=["uri-template", "concrete"],
+        default="uri-template",
+        help="Endpoint URL style; concrete is only needed for the viewer workaround.",
     )
     parser.add_argument(
         "--output",
@@ -276,10 +276,9 @@ def _is_uri_template(value: str) -> bool:
     return "{" in value or "}" in value
 
 
-def expand_endpoint(template: str, endpoint_style: str = "auto", **params: Any) -> str:
+def expand_endpoint(template: str, endpoint_style: str, **params: Any) -> str:
     filtered = {key: value for key, value in params.items() if value is not None}
-    is_template = _is_uri_template(template)
-    if endpoint_style == "uri-template" or (endpoint_style == "auto" and is_template):
+    if endpoint_style == "uri-template":
         return URITemplate(template).expand(filtered)
 
     parsed = urlsplit(template)
@@ -310,13 +309,13 @@ def _normalize_object_endpoints(node: dict[str, Any], endpoint_style: str) -> di
     collection_template = normalized.get("collection")
     if isinstance(collection_template, str) and _is_uri_template(collection_template):
         normalized["collection"] = _endpoint_node(
-            expand_endpoint(collection_template, id=object_id)
+            expand_endpoint(collection_template, endpoint_style, id=object_id)
         )
 
     document_template = normalized.get("document")
     if isinstance(document_template, str) and _is_uri_template(document_template):
         normalized["document"] = _endpoint_node(
-            expand_endpoint(document_template, resource=object_id)
+            expand_endpoint(document_template, endpoint_style, resource=object_id)
         )
 
     navigation_value = normalized.get("navigation")
@@ -327,7 +326,7 @@ def _normalize_object_endpoints(node: dict[str, Any], endpoint_style: str) -> di
                 _endpoint_node(
                     expand_endpoint(
                         navigation_value,
-                        endpoint_style=endpoint_style,
+                        endpoint_style,
                         resource=object_id,
                         tree=_tree_identifier(tree),
                         down=-1,
@@ -338,13 +337,13 @@ def _normalize_object_endpoints(node: dict[str, Any], endpoint_style: str) -> di
             normalized["navigation"] = navigation_links
         else:
             normalized["navigation"] = _endpoint_node(
-                expand_endpoint(navigation_value, resource=object_id, down=-1)
+                expand_endpoint(navigation_value, endpoint_style, resource=object_id, down=-1)
             )
 
     return normalized
 
 
-def normalize_endpoint_links(value: Any, endpoint_style: str = "auto") -> Any:
+def normalize_endpoint_links(value: Any, endpoint_style: str = "uri-template") -> Any:
     if isinstance(value, dict):
         normalized = {
             key: normalize_endpoint_links(val, endpoint_style) for key, val in value.items()
@@ -370,7 +369,7 @@ def navigation_uri_for_tree(
         return None
     return expand_endpoint(
         navigation_value,
-        endpoint_style=endpoint_style,
+        endpoint_style,
         resource=object_id,
         tree=_tree_identifier(tree),
         down=-1,

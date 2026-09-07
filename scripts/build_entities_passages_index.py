@@ -76,9 +76,10 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--endpoint-style",
-        choices=["auto", "uri-template", "concrete"],
-        default="auto",
-        help="Endpoint URL style; auto detects URI templates and concrete URLs.",
+
+        choices=["uri-template", "concrete"],
+        default="uri-template",
+        help="Endpoint URL style; concrete is only needed for the viewer workaround.",
     )
     parser.add_argument(
         "--resource-id",
@@ -199,8 +200,7 @@ def load_resource(dts_client: DTS_API, resource_id: str) -> DTS_Resource:
 
 def expand_endpoint(template: str, endpoint_style: str, **params: Any) -> str:
     filtered = {key: value for key, value in params.items() if value is not None}
-    is_template = "{" in template or "}" in template
-    if endpoint_style == "uri-template" or (endpoint_style == "auto" and is_template):
+    if endpoint_style == "uri-template":
         return URITemplate(template).expand(filtered)
 
     parsed = urlsplit(template)
