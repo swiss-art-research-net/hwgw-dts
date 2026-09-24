@@ -229,3 +229,7 @@ The script exits with code 1 when any check fails.
 
 - Scripts default to `http://rs4.ethz.ch/dts/`.
 - They use the `DTS_API` client pattern from the DTS validator.
+
+## Credits
+
+The Code in this repository has been developed by SARI/UZH in the context of a project funded by Digital Visual Studies/UZH and the The Bibliotheca Hertziana – Max Planck Institute for Art History.
